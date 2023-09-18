@@ -1,0 +1,14 @@
+version: '3'
+services:
+  postgresql:
+    image: postgres
+    container_name: monito-backend
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_HOST=localhost
+      - POSTGRES_USER=monito-backend
+      - POSTGRES_PASSWORD=monito-backend
+      - POSTGRES_DATABASE=monito-backend
+    command: postgres
+    restart: always
