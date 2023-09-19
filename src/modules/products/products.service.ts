@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateProductInput } from './dto/create-product.input';
 import { UpdateProductInput } from './dto/update-product.input';
-import {products} from "../moks";
+import {products} from "../../moks";
 
 @Injectable()
 export class ProductsService {
