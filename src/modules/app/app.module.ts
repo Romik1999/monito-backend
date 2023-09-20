@@ -5,6 +5,7 @@ import {ProductsModule} from '../products/products.module';
 import {ConfigModule, ConfigService} from "@nestjs/config";
 import {SequelizeModule} from "@nestjs/sequelize";
 import configurations from "../../configurations"
+import {Product} from "../products/entities/product.entity";
 
 @Module({
     imports: [ConfigModule.forRoot({
@@ -15,7 +16,7 @@ import configurations from "../../configurations"
             imports: [ConfigModule],
             inject: [ConfigService],
             useFactory: (configService: ConfigService)=>({
-                dialect: "postgres",
+                dialect: 'postgres',
                 host: configService.get('db_host'),
                 port: configService.get('db_port'),
                 username: configService.get('db_user'),
@@ -23,6 +24,7 @@ import configurations from "../../configurations"
                 database: configService.get('db_name'),
                 synchronize: true,
                 autoLoadModels: true,
+                models: [Product]
             })
         }),
         ProductsModule],
