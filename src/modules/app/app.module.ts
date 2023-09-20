@@ -6,6 +6,8 @@ import {ConfigModule, ConfigService} from "@nestjs/config";
 import {SequelizeModule} from "@nestjs/sequelize";
 import configurations from "../../configurations"
 import {Product} from "../products/entities/product.entity";
+import {Category} from "../category/entities/category.entity";
+import {CategoryModule} from "../category/category.module";
 
 @Module({
     imports: [ConfigModule.forRoot({
@@ -24,10 +26,12 @@ import {Product} from "../products/entities/product.entity";
                 database: configService.get('db_name'),
                 synchronize: true,
                 autoLoadModels: true,
-                models: [Product]
+                models: [Product, Category]
             })
         }),
-        ProductsModule],
+        ProductsModule,
+        CategoryModule
+    ],
     controllers: [AppController],
     providers: [AppService],
 })
