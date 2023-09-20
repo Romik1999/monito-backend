@@ -8,11 +8,10 @@ async function bootstrap() {
     const app = await NestFactory.create(AppModule);
     const configService = app.get(ConfigService);
     const port = configService.get('port')
-    app.useGlobalPipes(new ValidationPipe())
 
     const config = new DocumentBuilder()
-        .setTitle("Lesson api")
-        .setDescription("This api for lesson")
+        .setTitle("Monito")
+        .setDescription("This api for 'Monito' shop on React")
         .setVersion("1.0")
         .addTag('API')
         .build()
