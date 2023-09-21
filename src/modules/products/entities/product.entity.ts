@@ -1,4 +1,4 @@
-import {Column, HasMany, Model, Table} from "sequelize-typescript";
+import {BelongsTo, Column, ForeignKey, Model, Table} from "sequelize-typescript";
 import {Category} from "../../category/entities/category.entity";
 
 @Table
@@ -13,9 +13,9 @@ export class Product extends Model {
     color: string
     @Column
     size: string
-    @HasMany(()=>Category, {
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE'
-    })
-    category: Category[]
+    @ForeignKey(() => Category)
+    @Column
+    categoryId: number;
+    @BelongsTo(() => Category)
+    category: Category;
 }
