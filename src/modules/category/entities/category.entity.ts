@@ -4,9 +4,9 @@ import {Product} from "../../products/entities/product.entity";
 @Table
 export class Category extends Model {
     @Column
-    title: string
+    slug: string
     @Column
-    name: string
+    title: string
     @HasOne(() => Product, { foreignKey: 'categoryId' })
     product: Product;
 }

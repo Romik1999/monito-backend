@@ -8,6 +8,8 @@ import configurations from "../../configurations"
 import {Product} from "../products/entities/product.entity";
 import {Category} from "../category/entities/category.entity";
 import {CategoryModule} from "../category/category.module";
+import {Color} from "../colors/entities/color.entity";
+import {ColorsModule} from "../colors/colors.module";
 
 @Module({
     imports: [ConfigModule.forRoot({
@@ -26,11 +28,12 @@ import {CategoryModule} from "../category/category.module";
                 database: configService.get('db_name'),
                 synchronize: true,
                 autoLoadModels: true,
-                models: [Product, Category]
+                models: [Product, Category, Color]
             })
         }),
         ProductsModule,
-        CategoryModule
+        CategoryModule,
+        ColorsModule
     ],
     controllers: [AppController],
     providers: [AppService],
