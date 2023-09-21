@@ -4,6 +4,7 @@ import { UpdateProductInput } from './dto/update-product.input';
 import {products} from "../../moks";
 import {InjectModel} from "@nestjs/sequelize";
 import {Product} from "./entities/product.entity";
+import {Category} from "../category/entities/category.entity";
 
 @Injectable()
 export class ProductsService {
@@ -13,7 +14,13 @@ export class ProductsService {
   }
 
   findAll() {
-    return this.productRepository.findAll()
+    return this.productRepository.findAll({
+      include: {
+        model: Category,
+        attributes: ['slug', 'title'],
+        required: false
+      }
+    })
   }
 
   getProducts(){
