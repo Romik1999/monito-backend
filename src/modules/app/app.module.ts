@@ -10,6 +10,8 @@ import {Category} from "../category/entities/category.entity";
 import {CategoryModule} from "../category/category.module";
 import {Color} from "../colors/entities/color.entity";
 import {ColorsModule} from "../colors/colors.module";
+import {Gender} from "../genders/entities/gender.entity";
+import {GendersModule} from "../genders/genders.module";
 
 @Module({
     imports: [ConfigModule.forRoot({
@@ -28,12 +30,13 @@ import {ColorsModule} from "../colors/colors.module";
                 database: configService.get('db_name'),
                 synchronize: true,
                 autoLoadModels: true,
-                models: [Product, Category, Color]
+                models: [Product, Category, Color, Gender]
             })
         }),
         ProductsModule,
         CategoryModule,
-        ColorsModule
+        ColorsModule,
+        GendersModule
     ],
     controllers: [AppController],
     providers: [AppService],

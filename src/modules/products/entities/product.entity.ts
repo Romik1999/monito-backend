@@ -1,6 +1,7 @@
 import {BelongsTo, Column, ForeignKey, Model, Table} from "sequelize-typescript";
 import {Category} from "../../category/entities/category.entity";
 import {Color} from "../../colors/entities/color.entity";
+import {Gender} from "../../genders/entities/gender.entity";
 
 @Table
 export class Product extends Model {
@@ -10,8 +11,11 @@ export class Product extends Model {
     title: string
     @Column
     imageUrl: string
+    @ForeignKey(() => Gender)
     @Column
-    gender: string
+    genderId: number
+    @BelongsTo(() => Gender)
+    gender: Gender;
     @ForeignKey(() => Color)
     @Column
     colorId: number;
