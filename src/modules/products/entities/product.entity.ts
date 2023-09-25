@@ -28,4 +28,8 @@ export class Product extends Model {
     categoryId: number;
     @BelongsTo(() => Category)
     category: Category;
+    @Column
+    price: string
+    @Column
+    age: string
 }
